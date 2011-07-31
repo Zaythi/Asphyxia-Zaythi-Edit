@@ -147,15 +147,16 @@
 	
 	<Script file="modules\addonskins\addons.lua"/>
 	<Script file="modules\addonskins\addons_toggle.lua"/>
-	<Script file="modules\addonskins\LoadSkins.lua"/>
-	<Script file="modules\addonskins\KLE.lua"/>
-	<Script file="modules\addonskins\Omen.lua"/>
-	<Script file="modules\addonskins\Recount.lua"/>
-	<Script file="modules\addonskins\Skada.lua"/>
-	<Script file="modules\addonskins\TinyDPS.lua"/>
+	<Script file="modules\addonskins\loadskins.lua"/>
+	<Script file="modules\addonskins\kle.lua"/>
+	<Script file="modules\addonskins\omen.lua"/>
+	<Script file="modules\addonskins\recount.lua"/>
+	<Script file="modules\addonskins\skada.lua"/>
+	<Script file="modules\addonskins\tinydps.lua"/>
 	<Script file="modules\addonskins\dbm.lua"/>
 	<Script file="modules\addonskins\dxe.lua"/>
 	<Script file="modules\addonskins\bigwigs.lua"/>
+	<Script file="modules\addonskins\auctionator.lua"/>
 	
 	<Script file="modules\skins\core.lua"/>
 	<Script file="modules\skins\achievement.lua"/>
