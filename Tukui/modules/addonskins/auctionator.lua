@@ -11,7 +11,7 @@ local UI
 if ElvUI then UI=ElvUI else UI=Tukui end
 local T, C, L = unpack(UI)
 
-if not IsAddOnLoaded("Auctionator") or C["skin"].auctionator ~= true then return end
+if not IsAddOnLoaded("Auctionator") or C["Addon_Skins"].auctionator ~= true then return end
 
 -- Functions needed to make this work
 local function SetModifiedBackdrop(self)

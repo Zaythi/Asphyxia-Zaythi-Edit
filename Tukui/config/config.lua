@@ -123,6 +123,7 @@ C["Addon_Skins"] = {
 	["dxe"] = true,							-- skins DXE
 	["dbm"] = true,							-- skins DBM
 	["bigwigs"] = true,						-- skins BigWigs
+	["auctionator"] = true					-- skins Auctionator
 }
 
 C["sCombo"] = {
