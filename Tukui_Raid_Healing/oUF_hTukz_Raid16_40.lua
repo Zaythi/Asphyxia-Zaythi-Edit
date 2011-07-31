@@ -8,9 +8,10 @@ ns._Headers = {}
 local T, C, L = unpack(Tukui) -- Import: T - functions, constants, variables; C - config; L - locales
 if not C["unitframes"].enable == true then return end
 
-local font = C["media"].pixelfont
 local font2 = C["media"].uffont
-local Font = C["media"].font
+local font1 = C["media"].font
+local normTex = C["media"].normTex
+local font = C["media"].pixelfont
 
 local function Shared(self, unit)
 	self.colors = T.oUF_colors
@@ -20,13 +21,10 @@ local function Shared(self, unit)
 	
 	self.menu = T.SpawnMenu
 	
-	--self:SetBackdrop({bgFile = C["media"].blank, insets = {top = -T.mult, left = -T.mult, bottom = -T.mult, right = -T.mult}})
-	--self:SetBackdropColor(0, 0, 0)
-	
 	local health = CreateFrame('StatusBar', nil, self)
 	health:SetPoint("TOPLEFT")
 	health:SetPoint("TOPRIGHT")
-	health:Height(18*C["unitframes"].gridscale*T.raidscale)
+	health:Height(30*C["unitframes"].gridscale*T.raidscale)
 	health:SetStatusBarTexture(C["media"].normTex)
 	self.Health = health
 	
@@ -50,7 +48,7 @@ local function Shared(self, unit)
 	self.HealthBorder = HealthBorder
 		
 	health.value = health:CreateFontString(nil, "OVERLAY")
-	health.value:Point("CENTER", health, 1, -3)
+	health.value:Point("CENTER", health, 1, -1)
 	health.value:SetFont(font, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 	health.value:SetTextColor(1,1,1)
 	health.value:SetShadowOffset(1, -1)
@@ -86,10 +84,10 @@ local function Shared(self, unit)
 		end)
 	end
 		
-	--[[local power = CreateFrame("StatusBar", nil, self)
+	local power = CreateFrame("StatusBar", nil, self)
 	power:SetHeight(1.5*C["unitframes"].gridscale*T.raidscale)
 	power:SetWidth(54)
-	power:Point("CENTER", self.Health, "CENTER", 0, -8)
+	power:Point("CENTER", self.Health, "CENTER", 0, -10)
 	power:SetStatusBarTexture(C["media"].normTex)
 	power:SetFrameLevel(self.Health:GetFrameLevel() + 2)
 	self.Power = power
@@ -106,7 +104,7 @@ local function Shared(self, unit)
 	local PowerBorder = CreateFrame("Frame", nil, power)
 	PowerBorder:SetPoint("TOPLEFT", power, "TOPLEFT", T.Scale(-2), T.Scale(2))
 	PowerBorder:SetPoint("BOTTOMRIGHT", power, "BOTTOMRIGHT", T.Scale(2), T.Scale(-2))
-	PowerBorder:SetTemplate("Default")
+	PowerBorder:SetTemplate("Thin")
 	--PowerBorder:CreateShadow("Default")
 	PowerBorder:SetFrameLevel(power:GetFrameLevel() - 1)
 	self.PowerBorder = PowerBorder
@@ -116,10 +114,10 @@ local function Shared(self, unit)
 		power.bg.multiplier = 0.1				
 	else
 		power.colorPower = true
-	end--]]
+	end
 	
 	local name = self.Health:CreateFontString(nil, "OVERLAY")
-    name:SetPoint("TOP", 0, 8) 
+    name:SetPoint("TOP", 0, 18) 
 	name:SetPoint("BOTTOM") 
 	name:SetPoint("LEFT", 4, 0) 
 	name:SetPoint("RIGHT")
@@ -134,6 +132,13 @@ local function Shared(self, unit)
     leader:SetPoint("TOPLEFT", 0, 6)
 	self.Leader = leader
 	
+    local MasterLooter = health:CreateTexture(nil, "OVERLAY")
+    MasterLooter:Height(12*T.raidscale)
+    MasterLooter:Width(12*T.raidscale)
+	self.MasterLooter = MasterLooter
+    self:RegisterEvent("PARTY_LEADER_CHANGED", T.MLAnchorUpdate)
+    self:RegisterEvent("PARTY_MEMBERS_CHANGED", T.MLAnchorUpdate)
+	
 	local LFDRole = health:CreateTexture(nil, "OVERLAY")
     LFDRole:Height(15*T.raidscale)
     LFDRole:Width(15*T.raidscale)
@@ -141,12 +146,6 @@ local function Shared(self, unit)
 	LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
 	self.LFDRole = LFDRole
 	
-    local MasterLooter = health:CreateTexture(nil, "OVERLAY")
-    MasterLooter:Height(12*T.raidscale)
-    MasterLooter:Width(12*T.raidscale)
-	self.MasterLooter = MasterLooter
-    self:RegisterEvent("PARTY_LEADER_CHANGED", T.MLAnchorUpdate)
-    self:RegisterEvent("PARTY_MEMBERS_CHANGED", T.MLAnchorUpdate)
 	
     if C["unitframes"].aggro == true then
 		table.insert(self.__elements, T.UpdateThreat)
@@ -156,15 +155,15 @@ local function Shared(self, unit)
 	end
 	
 	if C["unitframes"].showsymbols == true then
-		local RaidIcon = health:CreateTexture(nil, 'OVERLAY')
+		local RaidIcon = power:CreateTexture(nil, 'OVERLAY')
 		RaidIcon:Height(18*T.raidscale)
 		RaidIcon:Width(18*T.raidscale)
-		RaidIcon:SetPoint('CENTER', self, 'TOP', 0, 4)
+		RaidIcon:SetPoint('CENTER', self, 'TOP')
 		RaidIcon:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\raidicons.blp") -- thx hankthetank for texture
 		self.RaidIcon = RaidIcon
 	end
 	
-	local ReadyCheck = health:CreateTexture(nil, "OVERLAY")
+	local ReadyCheck = power:CreateTexture(nil, "OVERLAY")
 	ReadyCheck:Height(12*C["unitframes"].gridscale*T.raidscale)
 	ReadyCheck:Width(12*C["unitframes"].gridscale*T.raidscale)
 	ReadyCheck:SetPoint('CENTER') 	
@@ -190,7 +189,7 @@ local function Shared(self, unit)
 	
 	if C["unitframes"].showsmooth == true then
 		health.Smooth = true
-		--power.Smooth = true
+		power.Smooth = true
 	end
 	
 	if C["unitframes"].healcomm then
@@ -249,8 +248,8 @@ local function Shared(self, unit)
 		RaidDebuffs:Height(21*C["unitframes"].gridscale)
 		RaidDebuffs:Width(21*C["unitframes"].gridscale)
 		RaidDebuffs:Point('CENTER', health, 2,1)
-		RaidDebuffs:SetFrameStrata(health:GetFrameStrata())
-		RaidDebuffs:SetFrameLevel(health:GetFrameLevel() + 2)
+		RaidDebuffs:SetFrameStrata(power:GetFrameStrata())
+		RaidDebuffs:SetFrameLevel(power:GetFrameLevel() + 2)
 		
 		RaidDebuffs:SetTemplate("Default")
 		
@@ -282,7 +281,7 @@ local function Shared(self, unit)
 	return self
 end
 
- --[[-- switch layout
+ --[[ -- switch layout
 	local swlicon = CreateFrame("Frame", "TukuiSwitchLayoutIcon", UIParent)
 	swlicon:CreatePanel("Default", 20, 20, "LEFT", TukuiInfoLeft, "RIGHT", 8, 0)
 	swlicon:SetFrameStrata("BACKGROUND")
@@ -290,70 +289,70 @@ end
 	swlicon:CreateShadow("Hydra")
 
 	local tex = swlicon:CreateTexture(nil, "OVERLAY")
-	tex:SetTexture(C.media.switchlayoutdd)
-	tex:SetPoint("TOPLEFT", swlicon, "TOPLEFT",  2, -2)
+	tex:SetTexture(C.media.switchlayoutheal)
+	tex:SetPoint("TOPLEFT", swlicon, "TOPLEFT", 2, -2)
 	tex:SetPoint("BOTTOMRIGHT", swlicon, "BOTTOMRIGHT", -2, 2)--]]
 
-
-oUF:RegisterStyle('TukuiDpsR40', Shared)
+oUF:RegisterStyle('TukuiHealR25R40', Shared)
 oUF:Factory(function(self)
-	oUF:SetActiveStyle("TukuiDpsR40")
+	oUF:SetActiveStyle("TukuiHealR25R40")	
 	if C["unitframes"].gridonly ~= true then
-		local raid = self:SpawnHeader("oUF_TukuiDpsRaid40", nil, "custom [@raid26,exists] show;hide", 
+		local raid = self:SpawnHeader("TukuiGrid", nil, "custom [@raid16,exists] show;hide",
 			'oUF-initialConfigFunction', [[
 				local header = self:GetParent()
 				self:SetWidth(header:GetAttribute('initial-width'))
 				self:SetHeight(header:GetAttribute('initial-height'))
 			]],
-		'initial-width', T.Scale(70*C["unitframes"].gridscale*T.raidscale),
-			'initial-height', T.Scale(20*C["unitframes"].gridscale*T.raidscale),	
+			'initial-width', T.Scale(66*C["unitframes"].gridscale*T.raidscale),
+			'initial-height', T.Scale(35*C["unitframes"].gridscale*T.raidscale),	
 			"showRaid", true,
-			"xoffset", T.Scale(7),
-			"yOffset", T.Scale(-5),
+			"xoffset", T.Scale(8),
+			"yOffset", T.Scale(-3),
 			"point", "LEFT",
 			"groupFilter", "1,2,3,4,5,6,7,8",
 			"groupingOrder", "1,2,3,4,5,6,7,8",
 			"groupBy", "GROUP",
 			"maxColumns", 8,
 			"unitsPerColumn", 5,
-			"columnSpacing", T.Scale(7),
-			"columnAnchorPoint", "TOP"
-		)	
+			"columnSpacing", T.Scale(3),
+			"columnAnchorPoint", "TOP"		
+		)
 		raid:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 18, -250*T.raidscale)
 	else
-		local raid = self:SpawnHeader("TukuiGrid", nil, "solo,raid,party",
+		local raid = self:SpawnHeader("TukuiGrid", nil, "raid,party",
 			'oUF-initialConfigFunction', [[
 				local header = self:GetParent()
 				self:SetWidth(header:GetAttribute('initial-width'))
 				self:SetHeight(header:GetAttribute('initial-height'))
 			]],
-			'initial-width', T.Scale(70*C["unitframes"].gridscale*T.raidscale),
-			'initial-height', T.Scale(20*C["unitframes"].gridscale*T.raidscale),
+			'initial-width', T.Scale(66*C["unitframes"].gridscale*T.raidscale),
+			'initial-height', T.Scale(35*C["unitframes"].gridscale*T.raidscale),
 			"showParty", true,
-			"showPlayer", C["unitframes"].showplayerinparty, 
-			"showRaid", true, 
-			"xoffset", T.Scale(7),
-			"yOffset", T.Scale(-5),
+			"showPlayer", C["unitframes"].showplayerinparty,
+			"showSolo", C["unitframes"].showsolo,
+			"showRaid", true,
+			"xoffset", T.Scale(8),
+			"yOffset", T.Scale(-3),
 			"point", "LEFT",
 			"groupFilter", "1,2,3,4,5,6,7,8",
 			"groupingOrder", "1,2,3,4,5,6,7,8",
 			"groupBy", "GROUP",
 			"maxColumns", 8,
 			"unitsPerColumn", 5,
-			"columnSpacing", T.Scale(4),
-			"columnAnchorPoint", "TOP",
-			"showSolo", C["unitframes"].showsolo
+			"columnSpacing", T.Scale(3),
+			"columnAnchorPoint", "TOP"		
 		)
-		raid:SetPoint("BOTTOMLEFT", TukuiChatBackgroundLeft, "TOPLEFT", 2, 5)
+		--raid:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 18, -250*T.raidscale)
+		raid:SetPoint("BOTTOM", InvTukuiActionBarBackground, "TOP", 0, 75)
 		
 		local pets = {} 
 			pets[1] = oUF:Spawn('partypet1', 'oUF_TukuiPartyPet1') 
-			pets[1]:Point('TOPLEFT', raid, 'TOPLEFT', 0, 50*C["unitframes"].gridscale*T.raidscale + -3)
-			pets[1]:Size(66*C["unitframes"].gridscale*T.raidscale, 34*C["unitframes"].gridscale*T.raidscale)
+			pets[1]:Point('TOPLEFT', raid, 'TOPLEFT', 0, -50*C["unitframes"].gridscale*T.raidscale + -3)
+			pets[1]:Size(66*C["unitframes"].gridscale*T.raidscale, 50*C["unitframes"].gridscale*T.raidscale)
 		for i =2, 4 do 
 			pets[i] = oUF:Spawn('partypet'..i, 'oUF_TukuiPartyPet'..i) 
-			pets[i]:Point('LEFT', pets[i-1], 'RIGHT', 7, 0)
-			pets[i]:Size(66*C["unitframes"].gridscale*T.raidscale, 34*C["unitframes"].gridscale*T.raidscale)
+			pets[i]:Point('LEFT', pets[i-1], 'RIGHT', 3, 0)
+			pets[i]:Size(66*C["unitframes"].gridscale*T.raidscale, 50*C["unitframes"].gridscale*T.raidscale)
 		end
 		
 		local ShowPet = CreateFrame("Frame")
@@ -362,6 +361,7 @@ oUF:Factory(function(self)
 		ShowPet:RegisterEvent("PARTY_LEADER_CHANGED")
 		ShowPet:RegisterEvent("PARTY_MEMBERS_CHANGED")
 		ShowPet:SetScript("OnEvent", function(self)
+		
 			if InCombatLockdown() then
 				self:RegisterEvent("PLAYER_REGEN_ENABLED")
 			else

@@ -5,7 +5,7 @@ C["general"] = {
 	["uiscale"] = 0.71,						-- set your value (between 0.64 and 1) of your uiscale if autoscale is off
 	["overridelowtohigh"] = false,			-- EXPERIMENTAL ONLY! override lower version to higher version on a lower reso.
 	["multisampleprotect"] = false,			-- I don't recommend this because of shitty border but, voila!
-	["backdropcolor"] = {0,0,0},			-- default backdrop color of panels
+	["backdropcolor"] = {0, 0, 0},			-- default backdrop color of panels
 	["bordercolor"] = {.125, .125, .125},	-- default border color of panels
 	["blizzardreskin"] = true				-- reskin all Blizzard frames
 }
@@ -112,8 +112,8 @@ C["castbar"] = {
 }
 
 C["Addon_Skins"] = {
-	["background"] = true,					-- Create a Panel that has the exactly same size as the right chat, placed at the bottomright (for addon placement)
-	["combat_toggle"] = true,				-- Shows the Addon Background, Omen, Recount & Skada infight, hides out of fight
+	["background"] = false,					-- Create a Panel that has the exactly same size as the right chat, placed at the bottomright (for addon placement)
+	["combat_toggle"] = false,				-- Shows the Addon Background, Omen, Recount & Skada infight, hides out of fight
 	["addons_toggle"] = true,				-- Toggle buttons for Recount, Omen, Atlasloot, and Encounter journal.
 	["Recount"] = true,						-- Enable Recount Skin
 	["Skada"] = true,						-- Enable Skada Skin
@@ -170,7 +170,9 @@ C["datatext"] = {
 	["mastery"] = 9,						-- show mastery rating
 	["micromenu"] = 8,						-- add a micro menu thought datatext
 	["regen"] = 0,							-- show mana regeneration
-	["profession"] = 3,						-- show profession
+	["profession"] = 0,						-- show profession
+	["calltoarms"] = 3,						-- Call to arms
+	["expertise"] = 0,						-- show your expertise rating
 	["enable_specswitcher"] = true, 		-- show talents
 	
 	-- Color Datatext
@@ -205,8 +207,7 @@ C["asphyxia_panels"] = {
 	["toppanel"] = true,					-- enable or disable top dummy panel.
 	["bottompanel"] = true,					-- enable or disable bottom dummy panel.
 	["asphyxiatalent"] = true,				-- enable or disable talent switcher module (replaces specswitcher datatext).
-	
-	}
+}
 
 C["chat"] = {
 	["enable"] = true,						-- blah

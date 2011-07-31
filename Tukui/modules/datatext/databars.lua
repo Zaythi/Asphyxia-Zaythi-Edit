@@ -22,10 +22,10 @@ for i = 1, 4 do
 	HydraData[i].Status:SetMinMaxValues(0, 100)
 	
 	local classcolorbar = RAID_CLASS_COLORS[T.myclass]
-		if C["datatext"].classcolored then
-			HydraData[i].Status:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
-		else
-			HydraData[i].Status:SetStatusBarColor(0.3, 0.2, 0.8)
+	if C["datatext"].classcolored then
+		HydraData[i].Status:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
+	else
+	HydraData[i].Status:SetStatusBarColor(0.3, 0.2, 0.8)
 	end
 	
 	HydraData[i].Status:Point("TOPLEFT", HydraData[i], "TOPLEFT", 2, -2)
@@ -33,7 +33,7 @@ for i = 1, 4 do
 
 	HydraData[i].Text = HydraData[i].Status:CreateFontString(nil, "OVERLAY")
 	HydraData[i].Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
-	HydraData[i].Text:Point("LEFT", HydraData[i], "LEFT", 6, 1)
+	HydraData[i].Text:Point("LEFT", HydraData[i], "LEFT", 6, 1.5)
 	HydraData[i].Text:SetShadowColor(0, 0, 0)
 	HydraData[i].Text:SetShadowOffset(1.25, -1.25)
 end
@@ -86,7 +86,7 @@ HydraData[2].Status:SetScript("OnUpdate", function(self, elapsed)
 	LastUpdate = LastUpdate - elapsed
 	
 	if LastUpdate < 0 then
-		self:SetMinMaxValues(0, 285)
+		self:SetMinMaxValues(0, 250)
 		local value = (select(3, GetNetStats()))
 		local max = 285
 		self:SetValue(value)
@@ -179,7 +179,6 @@ Stat:SetScript("OnEnter", function(self) collectgarbage("collect") end)
 Stat:SetScript("OnUpdate", UpdateMem)
 UpdateMem(Stat, 10)
 
-
 -- DURABILITY
 HydraData[4].Status:SetScript("OnEvent", function(self)
 	local Total = 0
@@ -214,7 +213,6 @@ end )
 HydraData[4].Status:RegisterEvent("UPDATE_INVENTORY_DURABILITY")
 HydraData[4].Status:RegisterEvent("MERCHANT_SHOW")
 HydraData[4].Status:RegisterEvent("PLAYER_ENTERING_WORLD")
-
 
 -- REPUTATION DATABARS
 local RepData = {}
@@ -446,7 +444,7 @@ local function OriginalBackdrop(self)
 end
 
 local toggle = CreateFrame("Frame", "CurrencyToggle", UIParent)
-toggle:CreatePanel("Default", 53, 20, "LEFT", TukuiInfoLeft, "RIGHT", 30, 0)
+toggle:CreatePanel("Default", 53, 20, "LEFT", TukuiInfoLeft, "RIGHT", 8, 0)
 toggle:EnableMouse(true)
 toggle:SetFrameStrata("MEDIUM")
 toggle:SetFrameLevel(2)

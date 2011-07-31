@@ -60,7 +60,7 @@ f:SetScript("OnEvent", function()
 					local g = math.floor(cost/10000)
 					if guildRepairFlag == 1 then
 						RepairAllItems(1)
-						DEFAULT_CHAT_FRAME:AddMessage("|cffffff00Repaired using |cffff0000guild|r bank.|r")
+						DEFAULT_CHAT_FRAME:AddMessage("|cffffff00Repaired using |cffff0000guild bank.|r")
 					else
 						RepairAllItems()
 						DEFAULT_CHAT_FRAME:AddMessage("|cffffff00Repaired using personal funds.|r")

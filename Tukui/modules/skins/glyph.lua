@@ -43,11 +43,16 @@ local function LoadSkin()
 	GlyphFrameClearInfoFrameIcon:Point("TOPLEFT", 2, -2)
 	GlyphFrameClearInfoFrameIcon:Point("BOTTOMRIGHT", -2, 2)
 	
-	GlyphFrameClearInfoFrame:CreateBackdrop("Default", true)
+	GlyphFrameClearInfoFrame:CreateBackdrop("Transparent", true)
 	GlyphFrameClearInfoFrame.backdrop:SetAllPoints()
 	GlyphFrameClearInfoFrame:StyleButton()
 	GlyphFrameClearInfoFrame:Size(25, 25)
-	
+
+	GlyphFrame.levelOverlay1:SetParent(GlyphFrameSparkleFrame)
+	GlyphFrame.levelOverlayText1:SetParent(GlyphFrameSparkleFrame)
+	GlyphFrame.levelOverlay2:SetParent(GlyphFrameSparkleFrame)
+	GlyphFrame.levelOverlayText2:SetParent(GlyphFrameSparkleFrame)
+
 	T.SkinScrollBar(GlyphFrameScrollFrameScrollBar, 5)
 
 	local StripAllTextures = {

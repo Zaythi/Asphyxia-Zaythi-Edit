@@ -31,8 +31,8 @@ Mod_AddonSkins:RegisterSkin("Quartz",function(Skin, skin, Layout, layout, config
 			bar.IconBorder:Show()
 		end
 		-- Fonts
-		bar.Text:SetFont(config.font,config.fontSize,config.fontStyle)
-		bar.TimeText:SetFont(config.font,config.fontSize,config.fontStyle)
+		bar.Text:SetFont(font, 12, "MONOCHROMEOUTLINE")
+		bar.TimeText:SetFont(font, 12, "MONOCHROMEOUTLINE")
 		-- Bar Texture
 		bar.Bar:SetStatusBarTexture(config.normTexture)
 	end

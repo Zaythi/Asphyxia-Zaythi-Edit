@@ -59,7 +59,7 @@ local function LoadSkin()
 				icon:SetAllPoints()
 
 				if not button.backdrop then
-					button:CreateBackdrop("Default", true)	
+					button:CreateBackdrop("Transparent", true)	
 				end
 			end	
 			
@@ -112,7 +112,7 @@ local function LoadSkin()
 	end
 	hooksecurefunc("SpellBookFrame_UpdateSkillLineTabs", SkinSkillLine)			
 	SpellBookFrame:SetTemplate("Transparent")
-	SpellBookFrame:CreateShadow("Default")
+	SpellBookFrame:CreateShadow("Transparent")
 
 	--Profession Tab
 	local professionbuttons = {
@@ -146,9 +146,11 @@ local function LoadSkin()
 
 	for _, button in pairs(professionbuttons) do
 		local icon = _G[button.."IconTexture"]
+		local rank = _G[button.."SubSpellName"]
 		local button = _G[button]
 		button:StripTextures()
-		
+
+		if rank then rank:SetTextColor(1, 1, 1) end
 		if icon then
 			icon:SetTexCoord(.08, .92, .08, .92)
 			icon:ClearAllPoints()
@@ -156,7 +158,7 @@ local function LoadSkin()
 			icon:Point("BOTTOMRIGHT", -2, 2)
 
 			if not button.backdrop then
-				button:CreateBackdrop("Default", true)	
+				button:CreateBackdrop("Transparent", true)	
 				button.backdrop:SetAllPoints()
 			end
 		end					
@@ -196,7 +198,7 @@ local function LoadSkin()
 			icon:Point("BOTTOMRIGHT", -2, 2)
 
 			if not button.backdrop then
-				button:CreateBackdrop("Default", true)	
+				button:CreateBackdrop("Transparent", true)	
 				button.backdrop:SetAllPoints()
 			end
 		end					

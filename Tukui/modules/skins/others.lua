@@ -28,7 +28,7 @@ local function LoadSkin()
 	for i = 1, getn(skins) do
 		_G[skins[i]]:SetTemplate("Transparent")
 		if _G[skins[i]] ~= _G["AutoCompleteBox"] then -- frame to blacklist from create shadow function
-			_G[skins[i]]:CreateShadow("Default")
+			_G[skins[i]]:CreateShadow("Transparent")
 		end
 	end
 
@@ -42,9 +42,9 @@ local function LoadSkin()
 	--
 	for i = 1, getn(ChatMenus) do
 		if _G[ChatMenus[i]] == _G["ChatMenu"] then
-			_G[ChatMenus[i]]:HookScript("OnShow", function(self) self:SetTemplate("Default", true) self:SetBackdropColor(unpack(C["media"].backdropcolor)) self:ClearAllPoints() self:SetPoint("BOTTOMLEFT", ChatFrame1, "TOPLEFT", 0, T.Scale(30)) end)
+			_G[ChatMenus[i]]:HookScript("OnShow", function(self) self:SetTemplate("Transparent", true) self:SetBackdropColor(unpack(C["media"].backdropcolor)) self:ClearAllPoints() self:SetPoint("BOTTOMLEFT", ChatFrame1, "TOPLEFT", 0, T.Scale(30)) end)
 		else
-			_G[ChatMenus[i]]:HookScript("OnShow", function(self) self:SetTemplate("Default", true) self:SetBackdropColor(unpack(C["media"].backdropcolor)) end)
+			_G[ChatMenus[i]]:HookScript("OnShow", function(self) self:SetTemplate("Transparent", true) self:SetBackdropColor(unpack(C["media"].backdropcolor)) end)
 		end
 	end
 
@@ -181,11 +181,44 @@ local function LoadSkin()
 	_G["StackSplitFrame"]:GetRegions():Hide()
 
 	RolePollPopup:SetTemplate("Transparent")
-	RolePollPopup:CreateShadow("Default")
+	RolePollPopup:CreateShadow("Transparent")
 	LFDDungeonReadyDialog:SetTemplate("Transparent")
-	LFDDungeonReadyDialog:CreateShadow("Default")
+	LFDDungeonReadyDialog:CreateShadow("Transparent")
 	T.SkinButton(LFDDungeonReadyDialogEnterDungeonButton)
 	T.SkinButton(LFDDungeonReadyDialogLeaveQueueButton)
+	
+	-- reskin sliders
+	local slides = {
+		"InterfaceOptionsCombatPanelSpellAlertOpacitySlider",
+		"InterfaceOptionsCombatPanelMaxSpellStartRecoveryOffset",
+		"InterfaceOptionsBattlenetPanelToastDurationSlider",
+		"InterfaceOptionsCameraPanelMaxDistanceSlider",
+		"InterfaceOptionsCameraPanelFollowSpeedSlider",
+		"InterfaceOptionsMousePanelMouseSensitivitySlider",
+		"InterfaceOptionsMousePanelMouseLookSpeedSlider",
+		"Advanced_MaxFPSSlider",
+		"Advanced_MaxFPSBKSlider",
+		"AudioOptionsSoundPanelSoundQuality",
+		"AudioOptionsSoundPanelMasterVolume",
+		"AudioOptionsSoundPanelSoundVolume",
+		"AudioOptionsSoundPanelMusicVolume",
+		"AudioOptionsSoundPanelAmbienceVolume",
+		"AudioOptionsVoicePanelMicrophoneVolume",
+		"AudioOptionsVoicePanelSpeakerVolume",
+		"AudioOptionsVoicePanelSoundFade",
+		"AudioOptionsVoicePanelMusicFade",
+		"AudioOptionsVoicePanelAmbienceFade",
+	}
+
+	for i = 1, getn(slides) do
+		if _G[slides[i]] then
+			if _G[slides[i]] ~= AudioOptionsSoundPanelSoundVolume then
+				T.SkinSlideBar(_G[slides[i]],8,true)
+			else
+				T.SkinSlideBar(_G[slides[i]],8)
+			end
+		end
+	end
 end
 
 tinsert(T.SkinFuncs["Tukui"], LoadSkin)
