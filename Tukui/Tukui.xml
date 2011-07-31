@@ -97,6 +97,7 @@
 	<Script file="modules\datatext\specswitcher.lua"/>
 	<Script file="modules\datatext\regen.lua"/>
 	<Script file="modules\datatext\profession.lua"/>
+	<Script file="modules\datatext\databars.lua"/>
 	<Script file="modules\datatext\calltoarms.lua"/>
 	<Script file="modules\datatext\expertise.lua"/>
 		

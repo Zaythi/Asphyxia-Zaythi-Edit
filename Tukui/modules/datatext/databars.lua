@@ -22,18 +22,18 @@ for i = 1, 4 do
 	HydraData[i].Status:SetMinMaxValues(0, 100)
 	
 	local classcolorbar = RAID_CLASS_COLORS[T.myclass]
-	if C["datatext"].classcolored then
-		HydraData[i].Status:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
-	else
-	HydraData[i].Status:SetStatusBarColor(0.3, 0.2, 0.8)
-	end
+		if C["datatext"].classcolored then
+			HydraData[i].Status:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
+		else
+			HydraData[i].Status:SetStatusBarColor(0.3, 0.2, 0.8)
+		end
 	
 	HydraData[i].Status:Point("TOPLEFT", HydraData[i], "TOPLEFT", 2, -2)
 	HydraData[i].Status:Point("BOTTOMRIGHT", HydraData[i], "BOTTOMRIGHT", -2, 2)
 
 	HydraData[i].Text = HydraData[i].Status:CreateFontString(nil, "OVERLAY")
 	HydraData[i].Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
-	HydraData[i].Text:Point("LEFT", HydraData[i], "LEFT", 6, 1.5)
+	HydraData[i].Text:Point("LEFT", HydraData[i], "LEFT", 6, 1)
 	HydraData[i].Text:SetShadowColor(0, 0, 0)
 	HydraData[i].Text:SetShadowOffset(1.25, -1.25)
 end
@@ -68,9 +68,10 @@ HydraData[1].Status:SetScript("OnUpdate", function(self, elapsed)
 		self:SetValue(value)
 		HydraData[1].Text:SetText("FPS: "..value)
 		local classcolorbar = RAID_CLASS_COLORS[T.myclass]
-		if C["datatext"].classcolored then
-		self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
-		elseif value * 100 / max >= 75 then
+		--if C["datatext"].classcolored then
+		--self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
+		--elseif value * 100 / max >= 75 then
+		if value * 100 / max >= 75 then
 			self:SetStatusBarColor( 30 / 255, 1, 30 / 255 , .8 )
 		elseif value * 100 / max < 75 and value * 100 / max > 40 then
 			self:SetStatusBarColor( 1, 180 / 255, 0, .8 )
@@ -86,15 +87,16 @@ HydraData[2].Status:SetScript("OnUpdate", function(self, elapsed)
 	LastUpdate = LastUpdate - elapsed
 	
 	if LastUpdate < 0 then
-		self:SetMinMaxValues(0, 250)
+		self:SetMinMaxValues(0, 285)
 		local value = (select(3, GetNetStats()))
 		local max = 285
 		self:SetValue(value)
 		HydraData[2].Text:SetText("MS: "..value)
 		local classcolorbar = RAID_CLASS_COLORS[T.myclass]
-		if C["datatext"].classcolored then
-		self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)	
-		elseif value * 100 / max <= 35 then
+		--if C["datatext"].classcolored then
+		--self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)	
+		--elseif value * 100 / max <= 35 then
+		if value * 100 / max <= 35 then
 			self:SetStatusBarColor( 30 / 255, 1, 30 / 255 , .8 )
 		elseif value * 100 / max > 35 and value * 100 / max < 75 then
 			self:SetStatusBarColor( 1, 180 / 255, 0, .8 )
@@ -200,9 +202,10 @@ HydraData[4].Status:SetScript("OnEvent", function(self)
 	self:SetValue(value)
 	HydraData[4].Text:SetText("Durability: "..value.."%")
 		local classcolorbar = RAID_CLASS_COLORS[T.myclass]
-	if C["datatext"].classcolored then
-		self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
-	elseif value >= 75 then
+	--if C["datatext"].classcolored then
+		--self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
+	--elseif value >= 75 then
+	if value >= 75 then
 		self:SetStatusBarColor( 30 / 255, 1, 30 / 255 , .8 )
 	elseif value < 75 and value > 40 then
 		self:SetStatusBarColor( 1, 180 / 255, 0, .8 )
@@ -444,7 +447,7 @@ local function OriginalBackdrop(self)
 end
 
 local toggle = CreateFrame("Frame", "CurrencyToggle", UIParent)
-toggle:CreatePanel("Default", 53, 20, "LEFT", TukuiInfoLeft, "RIGHT", 8, 0)
+toggle:CreatePanel("Default", 53, 20, "LEFT", TukuiInfoLeft, "RIGHT", 30, 0)
 toggle:EnableMouse(true)
 toggle:SetFrameStrata("MEDIUM")
 toggle:SetFrameLevel(2)

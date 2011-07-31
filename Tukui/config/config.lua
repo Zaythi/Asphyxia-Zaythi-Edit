@@ -145,7 +145,7 @@ C["loot"] = {
 }
 
 C["cooldown"] = {
-	["enable"] = true,						-- do i really need to explain this?
+	["enable"] = true,						-- do I really need to explain this?
 	["treshold"] = 5,						-- show decimal under X seconds and text turn red
 }
 
@@ -157,9 +157,9 @@ C["datatext"] = {
 	["wowtime"] = 10,						-- show time on panels
 	["guild"] = 1,							-- show number on guildmate connected on panels
 	["dur"] = 0,							-- show your equipment durability on panels.
-	["friends"] = 2,						-- show number of friends connected.
+	["friends"] = 3,						-- show number of friends connected.
 	["dps_text"] = 5,						-- show a dps meter on panels
-	["hps_text"] = 4,						-- show a heal meter on panels
+	["hps_text"] = 2,						-- show a heal meter on panels
 	["power"] = 7,							-- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
 	["haste"] = 0,							-- show your haste rating on panels.
 	["crit"] = 0,							-- show your crit rating on panels.
@@ -171,12 +171,12 @@ C["datatext"] = {
 	["micromenu"] = 8,						-- add a micro menu thought datatext
 	["regen"] = 0,							-- show mana regeneration
 	["profession"] = 0,						-- show profession
-	["calltoarms"] = 3,						-- Call to arms
+	["calltoarms"] = 4,						-- call to arms
 	["expertise"] = 0,						-- show your expertise rating
 	["enable_specswitcher"] = true, 		-- show talents
 	
 	-- Color Datatext
-	["classcolored"] = false,				-- classcolored datatext
+	["classcolored"] = true,				-- classcolored datatext
 	["color"] = {0.4, 0.4, 0.5},			-- datatext color (if classcolored = false) -- 0.15, 0.49, 0.69
 
 
@@ -192,8 +192,8 @@ C["databars"] = {
 	["width"] = 100,									-- enable Databars in the top left of the screen.
 	["height"] = 17,									-- enable Databars in the top left of the screen.
 	["point"] = {"TOPLEFT",UIParent,"TOPLEFT",8,-10},	-- where the bars will anchor
-	["currency"] = false,								-- show bars with currency
-	["reputation"] = false,								-- show bars with reputation 
+	["currency"] = true,								-- show bars with currency
+	["reputation"] = true,								-- show bars with reputation 
 	["reps"] = {										-- Show 5 factions of your choice, including your guild.
 		"Avengers of Hyjal",
 		"Therazane",
