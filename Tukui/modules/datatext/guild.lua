@@ -3,7 +3,7 @@
 --------------------------------------------------------------------
 local T, C, L = unpack(select(2, ...)) -- Import Functions/Constants, Config, Locales
 
-local USE_EPGP = true
+local USE_EPGP = false
 
 if C["datatext"].guild and C["datatext"].guild > 0 then	
 
