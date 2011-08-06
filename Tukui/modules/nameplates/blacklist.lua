@@ -31,4 +31,7 @@ T.PlateBlacklist = {
 	--Hunter Trap
 	["Venomous Snake"] = true,
 	["Viper"] = true,
+	
+	--Firelands
+	["Liquid Obsidian"] = true,
 }
