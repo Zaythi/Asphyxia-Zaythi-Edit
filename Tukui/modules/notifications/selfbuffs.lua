@@ -7,50 +7,56 @@ if C["buffreminder"].enable ~= true then return end
 
 T.remindbuffs = {
 	PRIEST = {
-		588, -- inner fire
-		73413, -- inner will
+		588,	-- Inner Fire
+		73413,	-- Inner Will
 	},
 	HUNTER = {
-		13165, -- hawk
-		5118, -- cheetah
-		13159, -- pack
-		20043, -- wild
-		82661, -- fox
+		13165,	-- Aspect of the Hawk
+		5118,	-- Aspect of the Cheetah
+		13159,	-- Aspect of the Pack
+		20043,	-- Aspect of the Wild
+		82661,	-- Aspect of the Fox
 	},
 	MAGE = {
-		7302, -- frost armor
-		6117, -- mage armor
-		30482, -- molten armor
+		7302,	-- Frost Armor
+		6117,	-- Mage Armor
+		30482,	-- Molten Armor
 	},
 	WARLOCK = {
-		28176, -- fel armor
-		687, -- demon armor
+		28176,	-- Fel Armor
+		687,	-- Demon Armor
 	},
 	SHAMAN = {
-		52127, -- water shield
-		324, -- lightning shield
-		974, -- earth shield
+		52127,	-- Water Shield
+		324,	-- Lightning Shield
+		974,	-- Earth Shield
 	},
 	WARRIOR = {
-		469, -- commanding Shout
-		6673, -- battle Shout
+		469,	-- Commanding Shout
+		6673,	-- Battle Shout
 	},
 	DEATHKNIGHT = {
-		57330, -- horn of Winter
-		31634, -- strength of earth totem
-		6673, -- battle Shout
-		93435, -- roar of courage (hunter pet)
+		57330,	-- Horn of Winter
+		31634,	-- Strength of Earth Totem
+		6673,	-- Battle Shout
+		93435,	-- Roar of Courage (pet)
+	},
+	PALADIN = {
+		20165,	-- Insight
+		31801,	-- Truth
+		20154,	-- Righteousness
+		20164,	-- Justice
 	},
 }
 
 T.remindenchants = {
 	ROGUE = {
-		2842, -- poison
+		2842,	-- Poison
 	},
 	SHAMAN = {
-		8024, -- flametongue
-		8232, -- windfury
-		51730, -- earthliving
+		8024,	-- Flametongue
+		8232,	-- Windfury
+		51730,	-- Earthliving
 	},
 }
 

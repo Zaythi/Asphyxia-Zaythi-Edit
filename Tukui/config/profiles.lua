@@ -22,8 +22,16 @@ end
 
 if T.myname == "Zaythi" then -- Change it to your character name.
 	C.unitframes.healcomm = true
-	C.unitframes.showsolo = true
 	C.unitframes.aggro = true
 	C.unitframes.raidunitdebuffwatch = true
 	C.unitframes.showplayerinparty = true
+end
+
+if T.myname == "Gannaghli" then -- Change it to your character name.
+	C.unitframes.healcomm = true
+	C.unitframes.aggro = true
+	C.unitframes.raidunitdebuffwatch = true
+	C.unitframes.showplayerinparty = true
+	C.actionbar.hideshapeshift = false
+	C.actionbar.hotkey = true
 end
