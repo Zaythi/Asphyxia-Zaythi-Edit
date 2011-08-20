@@ -210,7 +210,7 @@ local function CreateAuraHeader(filter, ...)
 end
 
 ScanAuras(CreateAuraHeader("HELPFUL", "TOPRIGHT", -205, -12))
-ScanAuras(CreateAuraHeader("HARMFUL", "TOPRIGHT", -205, -148))
+ScanAuras(CreateAuraHeader("HARMFUL", "TOPRIGHT", -205, -190))
 
 -- create our aura
 local start = CreateFrame("Frame")
