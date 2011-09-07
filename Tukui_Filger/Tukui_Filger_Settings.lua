@@ -1382,6 +1382,12 @@ ns.Filger_Spells = {
 			{ spellID = 83500, size = 72, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Magnetic Pull / Magnetische Anziehung (Twilight Ascendant Council)
 			{ spellID = 83587, size = 72, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Gravity Core (Twilight Ascendant Council)
+			{ spellID = 92075, size = 72, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Static Overload (Twilight Ascendant Council)
+			{ spellID = 92067, size = 72, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Frost Beacon (Twilight Ascendant Council)
+			{ spellID = 92307, size = 72, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Corruption: Accelerated / Verderbnis: Beschleunigung (Cho'gall)
 			{ spellID = 81836, size = 72, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Corruption: Malformation / Verderbnis: Missbildung (Cho'gall)
