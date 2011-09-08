@@ -7,11 +7,11 @@ local LastUpdate = 1
 
 for i = 1, 4 do
 	HydraData[i] = CreateFrame("Frame", "HydraData"..i, UIParent)
-	HydraData[i]:CreatePanel(nil, 100, 17, "CENTER", UIParent, "CENTER", -200, 200)
+	HydraData[i]:CreatePanel("Transparent", 100, 17, "CENTER", UIParent, "CENTER", -200, 200)
 	HydraData[i]:CreateShadow("")
 	
 	if i == 1 then
-		HydraData[i]:Point("TOPLEFT", UIParent, "TOPLEFT", 8, -10)
+		HydraData[i]:Point("TOPLEFT", UIParent, "TOPLEFT", 3, -8)
 	else
 		HydraData[i]:Point("LEFT", HydraData[i-1], "RIGHT", 3, 0)
 	end
@@ -25,7 +25,7 @@ for i = 1, 4 do
 		if C["datatext"].classcolored then
 			HydraData[i].Status:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
 		else
-			HydraData[i].Status:SetStatusBarColor(0.3, 0.2, 0.8)
+			HydraData[i].Status:SetStatusBarColor(0.4, 0.4, 0.5)
 		end
 	
 	HydraData[i].Status:Point("TOPLEFT", HydraData[i], "TOPLEFT", 2, -2)
@@ -69,8 +69,10 @@ HydraData[1].Status:SetScript("OnUpdate", function(self, elapsed)
 		HydraData[1].Text:SetText("FPS: "..value)
 		local classcolorbar = RAID_CLASS_COLORS[T.myclass]
 		--if C["datatext"].classcolored then
-		--self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
-		--elseif value * 100 / max >= 75 then
+		--	self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
+		--else
+		--	self:SetStatusBarColor(0.4, 0.4, 0.5)
+		--end
 		if value * 100 / max >= 75 then
 			self:SetStatusBarColor( 30 / 255, 1, 30 / 255 , .8 )
 		elseif value * 100 / max < 75 and value * 100 / max > 40 then
@@ -94,8 +96,10 @@ HydraData[2].Status:SetScript("OnUpdate", function(self, elapsed)
 		HydraData[2].Text:SetText("MS: "..value)
 		local classcolorbar = RAID_CLASS_COLORS[T.myclass]
 		--if C["datatext"].classcolored then
-		--self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)	
-		--elseif value * 100 / max <= 35 then
+		--	self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
+		--else
+		--	self:SetStatusBarColor(0.4, 0.4, 0.5)
+		--end
 		if value * 100 / max <= 35 then
 			self:SetStatusBarColor( 30 / 255, 1, 30 / 255 , .8 )
 		elseif value * 100 / max > 35 and value * 100 / max < 75 then
@@ -211,6 +215,7 @@ HydraData[4].Status:SetScript("OnEvent", function(self)
 		self:SetStatusBarColor( 1, 180 / 255, 0, .8 )
 	else
 		self:SetStatusBarColor( 1, 75 / 255, 75 / 255, 0.5, .8 )
+		--self:SetStatusBarColor(0.4, 0.4, 0.5)
 	end
 end )
 HydraData[4].Status:RegisterEvent("UPDATE_INVENTORY_DURABILITY")
@@ -239,7 +244,7 @@ for i = 1, GetNumFactions() do
 	if name == db[1] or name == db[2] or name == db[3] or name == db[4] or name == db[5] then
 	
 		local frame = CreateFrame("Frame", "RepData"..i, UIParent)
-		frame:CreatePanel(nil, TukuiMinimap:GetWidth(), 18, "CENTER", UIParent, "CENTER", 0, 0)
+		frame:CreatePanel("Transparent", TukuiMinimap:GetWidth(), 18, "CENTER", UIParent, "CENTER", 0, 0)
 		frame:EnableMouse(true)
 		frame:Animate(160, 0, 0.4)
 		frame:Hide()
@@ -308,21 +313,21 @@ end
 
 local function ModifiedBackdrop(self)
 	local color = RAID_CLASS_COLORS[T.myclass]
-	self:SetBackdropColor(unpack(C["media"].backdropcolor))
+	self:SetBackdropColor(color.r*.15, color.g*.15, color.b*.15)
 	self:SetBackdropBorderColor(color.r, color.g, color.b)
 end
 
 local function OriginalBackdrop(self)
-	self:SetBackdropColor(unpack(C["media"].backdropcolor))
-	self:SetBackdropBorderColor(unpack(C["media"].bordercolor))
+	self:SetTemplate("Default")
 end
 
 local toggle = CreateFrame("Frame", "RepToggle", TukuiChatBackgroundRight)
-toggle:CreatePanel(nil, 30, 15, "RIGHT", TukuiTabsRightBackground, "RIGHT", -84, 0)
+toggle:CreatePanel(nil, 30, 15, "TOPRIGHT", TukuiChatBackgroundRight, "TOPRIGHT", -2, -52)
 toggle:EnableMouse(true)
 toggle:SetFrameStrata("HIGH")
 toggle:SetFrameLevel(10)
 toggle:CreateShadow("Default")
+toggle:CreateOverlay(toggle)
 toggle:SetAlpha(0)
 toggle:HookScript("OnEnter", ModifiedBackdrop)
 toggle:HookScript("OnLeave", OriginalBackdrop)
@@ -339,7 +344,7 @@ toggle:SetScript("OnEnter", function()
 toggle.Text = toggle:CreateFontString(nil, "OVERLAY")
 toggle.Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 toggle.Text:Point("CENTER", toggle, "CENTER", 1, 1)
-toggle.Text:SetText(T.panelcolor.."R")
+toggle.Text:SetText(T.datacolor.."R")
 
 toggle:SetScript("OnMouseUp", function(self)
 	for _, frame in pairs(RepData) do
@@ -388,8 +393,9 @@ local function updateCurrency()
 
 		if name and amount > 0 then
 			local frame = CreateFrame("Frame", "CurrencyData"..id, UIParent)
-			frame:CreatePanel(nil, 120, 20, "CENTER", UIParent, "CENTER", 0, 0)
+			frame:CreatePanel("Transparent", 120, 20, "CENTER", UIParent, "CENTER", 0, 0)
 			frame:EnableMouse(true)
+			frame:CreateShadow("Default")
 			frame:Animate(-140, 0, 0.4)
 			frame:Hide()
 
@@ -413,8 +419,9 @@ local function updateCurrency()
 			frame.IconBG = CreateFrame("Frame", "CurrencyDataIconBG"..id, frame)
 			frame.IconBG:CreatePanel(nil, 20, 20, "BOTTOMLEFT", frame, "BOTTOMRIGHT", T.Scale(3), 0)
 			frame.Icon = frame.IconBG:CreateTexture(nil, "ARTWORK")
-			frame.Icon:Point("TOPLEFT", frame.IconBG, "TOPLEFT", 2, -2)
+			frame.Icon:Point("TOPLEFT", frame.IconBG, "TOPLEFT", 4, -2)
 			frame.Icon:Point("BOTTOMRIGHT", frame.IconBG, "BOTTOMRIGHT", -2, 2)
+			frame.IconBG:CreateShadow("Default")
 			frame.Icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
 			frame.Icon:SetTexture("Interface\\Icons\\"..icon)
 
@@ -428,7 +435,7 @@ local function updateCurrency()
 	for key, frame in ipairs(CurrencyData) do
 		frame:ClearAllPoints()
 		if key == 1 then
-			frame:Point("TOPLEFT", UIParent, "TOPLEFT", 8, -30)
+			frame:Point("TOPLEFT", UIParent, "TOPLEFT", 3, -30)
 		else
 			frame:Point("TOP", CurrencyData[key-1], "BOTTOM", 0, -3)
 		end
@@ -447,10 +454,11 @@ local function OriginalBackdrop(self)
 end
 
 local toggle = CreateFrame("Frame", "CurrencyToggle", UIParent)
-toggle:CreatePanel("Default", 53, 20, "LEFT", TukuiInfoLeft, "RIGHT", 30, 0)
+toggle:CreatePanel("Default", 30, 15, "TOPRIGHT", TukuiChatBackgroundRight, "TOPRIGHT", -2, -84)
 toggle:EnableMouse(true)
 toggle:SetFrameStrata("MEDIUM")
 toggle:SetFrameLevel(2)
+toggle:CreateOverlay(toggle)
 toggle:CreateShadow("Default")
 toggle:SetAlpha(0)
 toggle:HookScript("OnEnter", ModifiedBackdrop)
@@ -468,7 +476,7 @@ toggle:SetScript("OnEnter", function()
 toggle.Text = toggle:CreateFontString(nil, "OVERLAY")
 toggle.Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 toggle.Text:Point("CENTER", toggle, "CENTER", 1.5, 1)
-toggle.Text:SetText(T.panelcolor.."Currency")
+toggle.Text:SetText(T.datacolor.."C")
 toggle:SetScript("OnMouseUp", function(self)
 	for _, frame in pairs(CurrencyData) do
 		if frame and frame:IsVisible() then

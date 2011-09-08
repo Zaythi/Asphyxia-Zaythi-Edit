@@ -13,13 +13,6 @@ end
 -- Name need to be case sensitive
 ----------------------------------------------------------------------------
 
---[[
-if T.myname == "Zaythi" then -- Change it to your character name.
-	C.actionbar.custombar.primary = {49040, 40768,  "Soul Harvest", "Demon Soul", "Death Coil"}
-	C.actionbar.custombar.secondary = {49040, 40768,  "Soul Harvest", "Demon Soul", "Death Coil"}
-end
-]]
-
 if T.myname == "Zaythi" then -- Change it to your character name.
 	C.unitframes.healcomm = true
 	C.unitframes.aggro = true

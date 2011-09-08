@@ -14,7 +14,7 @@ if C["datatext"].currency and C["datatext"].currency > 0 then
 	T.PP(C["datatext"].currency, Text)
 	
 	local function update()
-		local _text = T.StatColor.."---"
+		local _text = T.datacolor.."---"
 		for i = 1, MAX_WATCHED_TOKENS do
 			local name, count, _, _, _ = GetBackpackCurrencyInfo(i)
 			if name and count then
@@ -23,7 +23,7 @@ if C["datatext"].currency and C["datatext"].currency > 0 then
 				for _, word in ipairs(words) do
 					_text = _text .. string.sub(word,1,1)
 				end
-				_text = _text .. ": " .. T.panelcolor .. count .. "|r"
+				_text = _text .. ": " .. T.datacolor .. count .. "|r"
 			end
 		end
 		

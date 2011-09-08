@@ -13,7 +13,7 @@ C["general"] = {
 C["unitframes"] = {
 
 	-- layout
-	["style"] = "Asphyxia3",				-- unitframe style, choose from ("Asphyxia", "Asphyxia2", "Asphyxia3", "Asphyxia4", "Smelly" or "Tukui")
+	["style"] = "Asphyxia",					-- unitframe style, choose from ("Asphyxia", "Smelly" or "Tukui")
 
 	-- general options
 	["enable"] = true,						-- do I really need to explain this?
@@ -87,11 +87,6 @@ C["auras"] = {
 }
 
 C["actionbar"] = {
-	["custombar"] = {								
-		["enable"] = true,					-- Herp
-		["primary"] = {},					-- DO NOT CHANGE THIS SETTING HERE! Setup in the profiles.lua either based on class or toon name
-		["secondary"] = {},					-- DO NOT CHANGE THIS SETTING HERE! Setup in the profiles.lua either based on class or toon name
-	},
 	["enable"] = true,						-- enable tukui action bars
 	["hotkey"] = false,						-- enable hotkey display on buttons.
 	["macrotext"] = false,					-- display macro text on buttons.
@@ -115,16 +110,15 @@ C["castbar"] = {
 C["Addon_Skins"] = {
 	["background"] = false,					-- Create a Panel that has the exactly same size as the right chat, placed at the bottomright (for addon placement)
 	["combat_toggle"] = false,				-- Shows the Addon Background, Omen, Recount & Skada infight, hides out of fight
-	["addons_toggle"] = true,				-- Toggle buttons for Recount, Omen, Atlasloot, and Encounter journal.
 	["Recount"] = true,						-- Enable Recount Skin
 	["Skada"] = true,						-- Enable Skada Skin
 	["Omen"] = true,						-- Enable Omen Skin
-	["KLE"] = true,							-- Enable KLE Skin
 	["TinyDPS"] = true,						-- Enable TinyDPS Skin
-	["dxe"] = true,							-- skins DXE
-	["dbm"] = true,							-- skins DBM
+	["DBM"] = true,							-- skins DBM
 	["bigwigs"] = true,						-- skins BigWigs
-	["auctionator"] = true					-- skins Auctionator
+	["auctionator"] = true,					-- skins Auctionator
+	["embedright"] = "Recount",				-- Addon to embed to the right frame ("Recount", & "Skada")
+	["embedrighttoggle"] = true,
 }
 
 C["sCombo"] = {
@@ -154,26 +148,26 @@ C["cooldown"] = {
 C["datatext"] = {
 	["fps_ms"] = 0,							-- show fps and ms on panels
 	["system"] = 0,							-- show total memory and others systems infos on panels
-	["bags"] = 0,							-- show space used in bags on panels
+	["bags"] = 5,							-- show space used in bags on panels
 	["gold"] = 6,							-- show your current gold on panels
-	["wowtime"] = 10,						-- show time on panels
+	["wowtime"] = 12,						-- show time on panels
 	["guild"] = 1,							-- show number on guildmate connected on panels
 	["dur"] = 0,							-- show your equipment durability on panels.
-	["friends"] = 3,						-- show number of friends connected.
-	["dps_text"] = 5,						-- show a dps meter on panels
-	["hps_text"] = 2,						-- show a heal meter on panels
+	["friends"] = 2,						-- show number of friends connected.
+	["dps_text"] = 0,						-- show a dps meter on panels
+	["hps_text"] = 0,						-- show a heal meter on panels
 	["power"] = 7,							-- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
-	["haste"] = 0,							-- show your haste rating on panels.
-	["crit"] = 0,							-- show your crit rating on panels.
+	["haste"] = 8,							-- show your haste rating on panels.
+	["crit"] = 9,							-- show your crit rating on panels.
 	["avd"] = 0,							-- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,							-- show your armor value against the level mob you are currently targeting
 	["currency"] = 0,						-- show your tracked currency on panels
-	["hit"] = 0,							-- show hit rating
-	["mastery"] = 9,						-- show mastery rating
-	["micromenu"] = 8,						-- add a micro menu thought datatext
+	["hit"] = 11,							-- show hit rating
+	["mastery"] = 10,						-- show mastery rating
+	["micromenu"] = 4,						-- add a micro menu thought datatext
 	["regen"] = 0,							-- show mana regeneration
 	["profession"] = 0,						-- show profession
-	["calltoarms"] = 4,						-- call to arms
+	["calltoarms"] = 3,						-- call to arms
 	["expertise"] = 0,						-- show your expertise rating
 	["enable_specswitcher"] = true, 		-- show talents
 	
@@ -206,9 +200,7 @@ C["databars"] = {
 }
 
 C["asphyxia_panels"] = {
-	["toppanel"] = true,					-- enable or disable top dummy panel.
-	["bottompanel"] = true,					-- enable or disable bottom dummy panel.
-	["asphyxiatalent"] = true,				-- enable or disable talent switcher module (replaces specswitcher datatext).
+	["asphyxiatalent"] = true,				-- enable or disable talent switcher module (replaces specswitcher datatext).	
 }
 
 C["chat"] = {
