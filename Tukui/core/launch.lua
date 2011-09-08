@@ -9,15 +9,11 @@ local function chatsetup()
 	FCF_SetLocked(ChatFrame1, 1)
 	FCF_DockFrame(ChatFrame2)
 	FCF_SetLocked(ChatFrame2, 1)
---	FCF_OpenNewWindow(L.chat_general)
---	FCF_SetLocked(ChatFrame3, 1)
---	FCF_DockFrame(ChatFrame3)
+	--FCF_OpenNewWindow(L.chat_general)
+	--FCF_SetLocked(ChatFrame3, 1)
+	--FCF_DockFrame(ChatFrame3)
 
---	FCF_OpenNewWindow(LOOT)
---	FCF_UnDockFrame(ChatFrame4)
---	FCF_SetLocked(ChatFrame4, 1)
---	ChatFrame4:Show()
-	FCF_OpenNewWindow(SPAM)
+	FCF_OpenNewWindow(LOOT)
 	FCF_UnDockFrame(ChatFrame3)
 	FCF_SetLocked(ChatFrame3, 1)
 	ChatFrame3:Show()
@@ -33,11 +29,11 @@ local function chatsetup()
 		-- tell wow that we are using new size
 		SetChatWindowSavedDimensions(chatFrameId, T.Scale(T.InfoLeftRightWidth + 1), T.Scale(111))
 		
-		-- move general bottom left or SPAM (if found) on right
+		-- move general bottom left or Loot (if found) on right
 		if i == 1 then
 			frame:ClearAllPoints()
 			frame:Point("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", 0, 6)
-		elseif i == 3 and chatName == SPAM then
+		elseif i == 3 and chatName == LOOT then
 			frame:ClearAllPoints()
 			frame:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, 6)
 		end
@@ -49,15 +45,20 @@ local function chatsetup()
 		FCF_SetChatWindowFontSize(nil, frame, 12)
 		
 		-- rename windows general and combat log
-		if i == 1 then FCF_SetWindowName(frame, "General") end
-		if i == 2 then FCF_SetWindowName(frame, "Log") end
+		if i == 1 then 
+			FCF_SetWindowName(frame, "General")
+		elseif i == 2 then
+			FCF_SetWindowName(frame, "Log")
+		elseif i == 3 then 
+			FCF_SetWindowName(frame, "Loot/Spam") 
+		end
 	end
 	
 	ChatFrame_RemoveAllMessageGroups(ChatFrame1)
-	ChatFrame_RemoveChannel(ChatFrame1, L.chat_trade)		-- erf, it seem we need to localize this now
-	ChatFrame_RemoveChannel(ChatFrame1, L.chat_general)		-- erf, it seem we need to localize this now
-	ChatFrame_RemoveChannel(ChatFrame1, L.chat_defense)		-- erf, it seem we need to localize this now
-	ChatFrame_RemoveChannel(ChatFrame1, L.chat_recruitment)	-- erf, it seem we need to localize this now
+	ChatFrame_RemoveChannel(ChatFrame1, GENERAL)
+	ChatFrame_RemoveChannel(ChatFrame1, L.chat_trade) 		-- erf, it seem we need to localize this now
+	ChatFrame_RemoveChannel(ChatFrame1, L.chat_defense) 	-- erf, it seem we need to localize this now
+	ChatFrame_RemoveChannel(ChatFrame1, L.chat_recrutment) 	-- erf, it seem we need to localize this now
 	ChatFrame_RemoveChannel(ChatFrame1, L.chat_lfg) 		-- erf, it seem we need to localize this now
 	ChatFrame_AddMessageGroup(ChatFrame1, "SAY")
 	ChatFrame_AddMessageGroup(ChatFrame1, "EMOTE")
@@ -90,27 +91,36 @@ local function chatsetup()
 	ChatFrame_AddMessageGroup(ChatFrame1, "ACHIEVEMENT")
 	ChatFrame_AddMessageGroup(ChatFrame1, "BN_WHISPER")
 	ChatFrame_AddMessageGroup(ChatFrame1, "BN_CONVERSATION")
-	ChatFrame_AddMessageGroup(ChatFrame1, "GUILD_ACHIEVEMENT")
+	ChatFrame_AddMessageGroup(ChatFrame1, "BN_INLINE_TOAST_ALERT")
 
+	--[[
+	-- Setup the whisper chat frame
+	ChatFrame_RemoveAllMessageGroups(ChatFrame3)
+	ChatFrame_RemoveChannel(ChatFrame3, L.chat_trade) 		-- erf, it seem we need to localize this now
+	ChatFrame_RemoveChannel(ChatFrame3, L.chat_general) 	-- erf, it seem we need to localize this now
+	ChatFrame_RemoveChannel(ChatFrame3, L.chat_defense) 	-- erf, it seem we need to localize this now
+	ChatFrame_RemoveChannel(ChatFrame3, L.chat_recrutment) 	-- erf, it seem we need to localize this now
+	ChatFrame_RemoveChannel(ChatFrame3, L.chat_lfg) 		-- erf, it seem we need to localize this now
+	ChatFrame_AddMessageGroup(ChatFrame3, "BN_WHISPER")
+	ChatFrame_AddMessageGroup(ChatFrame3, "BN_CONVERSATION")
+	ChatFrame_AddMessageGroup(ChatFrame3, "WHISPER")
+	]]
 			
 	-- Setup the right chat
 	ChatFrame_RemoveAllMessageGroups(ChatFrame3)
-	ChatFrame_RemoveChannel(ChatFrame3, L.chat_trade)		-- erf, it seem we need to localize this now
-	ChatFrame_RemoveChannel(ChatFrame3, L.chat_general)		-- erf, it seem we need to localize this now
-	ChatFrame_RemoveChannel(ChatFrame3, L.chat_defense)		-- erf, it seem we need to localize this now
-	ChatFrame_RemoveChannel(ChatFrame3, L.chat_recruitment)	-- erf, it seem we need to localize this now
-	ChatFrame_RemoveChannel(ChatFrame3, L.chat_lfg)			-- erf, it seem we need to localize this now
 	ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_XP_GAIN")
 	ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_HONOR_GAIN")
 	ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_FACTION_CHANGE")
 	ChatFrame_AddMessageGroup(ChatFrame3, "LOOT")
+	ChatFrame_AddMessageGroup(ChatFrame3, "SKILL")
 	ChatFrame_AddMessageGroup(ChatFrame3, "MONEY")
+	ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_GUILD_XP_GAIN")
 	ChatFrame_AddMessageGroup(ChatFrame3, "CURRENCY")
-	ChatFrame_AddChannel(ChatFrame3, L.chat_trade)			-- erf, it seem we need to localize this now
-	ChatFrame_AddChannel(ChatFrame3, L.chat_general)		-- erf, it seem we need to localize this now
-	ChatFrame_AddChannel(ChatFrame3, L.chat_recruitment)	-- erf, it seem we need to localize this now
-	ChatFrame_AddChannel(ChatFrame3, L.chat_lfg)			-- erf, it seem we need to localize this now
-
+	ChatFrame_AddChannel(ChatFrame3, GENERAL)
+	ChatFrame_AddChannel(ChatFrame3, L.chat_trade) 		-- erf, it seem we need to localize this now
+	ChatFrame_AddChannel(ChatFrame3, L.chat_defense) 	-- erf, it seem we need to localize this now
+	ChatFrame_AddChannel(ChatFrame3, L.chat_recrutment) -- erf, it seem we need to localize this now
+	ChatFrame_AddChannel(ChatFrame3, L.chat_lfg) 		-- erf, it seem we need to localize this now
 			
 	-- enable classcolor automatically on login and on each character without doing /configure each time.
 	ToggleChatColorNamesByClassGroup(true, "SAY")
@@ -133,12 +143,17 @@ local function chatsetup()
 	ToggleChatColorNamesByClassGroup(true, "CHANNEL3")
 	ToggleChatColorNamesByClassGroup(true, "CHANNEL4")
 	ToggleChatColorNamesByClassGroup(true, "CHANNEL5")
+	ToggleChatColorNamesByClassGroup(true, "CHANNEL6")
+	ToggleChatColorNamesByClassGroup(true, "CHANNEL7")
+	ToggleChatColorNamesByClassGroup(true, "CHANNEL8")
+	ToggleChatColorNamesByClassGroup(true, "CHANNEL9")
+	ToggleChatColorNamesByClassGroup(true, "CHANNEL10")
 	
 	-- Chat Colors
-	ChangeChatColor("CHANNEL1", 195/255, 230/255, 232/255) -- General
-	ChangeChatColor("CHANNEL2", 232/255, 158/255, 121/255) -- Trade
-	ChangeChatColor("CHANNEL3", 232/255, 228/255, 121/255) -- Local Defense
-	ChangeChatColor("CHANNEL4", 255/255, 255/255, 1/255) -- LFG
+	ChangeChatColor("CHANNEL1", 255/255, 255/255, 192/255) -- General
+	ChangeChatColor("CHANNEL2", 255/255, 255/255, 192/255) -- Trade
+	ChangeChatColor("CHANNEL3", 255/255, 255/255, 192/255) -- Local Defense
+	ChangeChatColor("CHANNEL4", 255/255, 255/255, 192/255) -- LFG
 end
 
 local function cvarsetup()
