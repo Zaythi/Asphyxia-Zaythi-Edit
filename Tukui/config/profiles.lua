@@ -18,6 +18,8 @@ if T.myname == "Zaythi" then -- Change it to your character name.
 	C.unitframes.aggro = true
 	C.unitframes.raidunitdebuffwatch = true
 	C.unitframes.showplayerinparty = true
+	C.datatext.power = 8
+	C.datatext.regen = 10
 end
 
 if T.myname == "Gannaghli" then -- Change it to your character name.
