@@ -1293,7 +1293,6 @@ if C["unitframes"].raidunitdebuffwatch == true then
 			-- Alysrazor
 				SpellName(101296),	-- Fieroblast
 				SpellName(100723),	-- Gushing Wound
-				SpellName(99389),	-- Imprinted
 				SpellName(101729),	-- Blazing Claw
 			
 			-- Shannox

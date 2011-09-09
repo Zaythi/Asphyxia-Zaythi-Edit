@@ -110,11 +110,11 @@ C["castbar"] = {
 C["Addon_Skins"] = {
 	["background"] = false,					-- Create a Panel that has the exactly same size as the right chat, placed at the bottomright (for addon placement)
 	["combat_toggle"] = false,				-- Shows the Addon Background, Omen, Recount & Skada infight, hides out of fight
-	["Recount"] = true,						-- Enable Recount Skin
-	["Skada"] = true,						-- Enable Skada Skin
-	["Omen"] = true,						-- Enable Omen Skin
+	["recount"] = true,						-- Enable Recount Skin
+	["skada"] = true,						-- Enable Skada Skin
+	["omen"] = true,						-- Enable Omen Skin
 	["TinyDPS"] = true,						-- Enable TinyDPS Skin
-	["DBM"] = true,							-- skins DBM
+	["dbm"] = true,							-- skins DBM
 	["bigwigs"] = true,						-- skins BigWigs
 	["auctionator"] = true,					-- skins Auctionator
 	["embedright"] = "Recount",				-- Addon to embed to the right frame ("Recount", & "Skada")
@@ -205,7 +205,7 @@ C["asphyxia_panels"] = {
 
 C["chat"] = {
 	["enable"] = true,						-- blah
-	["rightchatnumber"] = 4,				-- Rightchat-background is attached to ChatFrameX ..X = value
+	["rightchatnumber"] = 3,				-- Rightchat-background is attached to ChatFrameX ..X = value
 	["whispersound"] = true,				-- play a sound when receiving whisper
 	["background"] = true,					-- Dont make it false!!!
 }

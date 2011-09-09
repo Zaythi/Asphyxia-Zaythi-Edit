@@ -150,10 +150,10 @@
 	<Script file="modules\notifications\selfbuffs.lua"/>
 	
 	<Script file="modules\addonskins\combat_toggle.lua"/>
-	<Script file="modules\addonskins\Tukui_DBM.lua"/>
-	<Script file="modules\addonskins\Omen.lua"/>
-	<Script file="modules\addonskins\Recount.lua"/>
-	<Script file="modules\addonskins\Skada.lua"/>
+	<Script file="modules\addonskins\dbm.lua"/>
+	<Script file="modules\addonskins\omen.lua"/>
+	<Script file="modules\addonskins\recount.lua"/>
+	<Script file="modules\addonskins\skada.lua"/>
 	<Script file="modules\addonskins\TinyDPS.lua"/>
 	<Script file="modules\addonskins\bigwigs.lua"/>
 	<Script file="modules\addonskins\balancepower.lua"/>
