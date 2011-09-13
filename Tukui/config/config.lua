@@ -88,17 +88,20 @@ C["auras"] = {
 
 C["actionbar"] = {
 	["enable"] = true,						-- enable tukui action bars
-	["hotkey"] = false,						-- enable hotkey display on buttons.
+	["hotkey"] = true,						-- enable hotkey display on buttons.
 	["macrotext"] = false,					-- display macro text on buttons.
 	["hideshapeshift"] = false,				-- hide shapeshift or totembar because it was a lot requested.
-	["verticalshapeshift"] = false,			-- set shapeshift bar to show vertically
 	["showgrid"] = true,					-- show grid on empty button
 	["buttonsize"] = 27,					-- normal buttons size
 	["petbuttonsize"] = 27,					-- pet & stance buttons size
 	["buttonspacing"] = 4,					-- buttons spacing
+	["stancebuttonsize"] = 27,				-- pet & stance buttons size
 	["mainbarWidth"] = 12,					-- amount of buttons per row on main bar (set between 1-12)
 	["sidebarWidth"] = 6,					-- amount of buttons per row on side bars (set between 0-6, 0 = disabled)
 	["bgPanel"] = true,						-- enable background panels for actionbars
+	["vertical_rightbars"] = false,			-- vertical or horizontal right bars
+	["vertical_shapeshift"] = false,		-- (NOT FOR SHAMANS/TOTEMS) vertical or horizontal shapeshift bar
+	["mainswap"] = false,					-- swap bottom actionbars (main bar on top)
 }
 
 C["castbar"] = {
@@ -117,7 +120,7 @@ C["Addon_Skins"] = {
 	["dbm"] = true,							-- skins DBM
 	["bigwigs"] = true,						-- skins BigWigs
 	["auctionator"] = true,					-- skins Auctionator
-	["embedright"] = "Recount",				-- Addon to embed to the right frame ("Recount", & "Skada")
+	["embedright"] = "None",				-- Addon to embed to the right frame ("Recount", & "Skada")
 	["embedrighttoggle"] = true,
 }
 
@@ -205,9 +208,13 @@ C["asphyxia_panels"] = {
 
 C["chat"] = {
 	["enable"] = true,						-- blah
-	["rightchatnumber"] = 2,				-- Rightchat-background is attached to ChatFrameX ..X = value
+	["width"] = 378,						-- adjust the chatframe width
+	["height"] = 175,						-- adjust the chatframe height 
 	["whispersound"] = true,				-- play a sound when receiving whisper
+	["justifyRight"] = false,				-- set right chat frame text to the right
 	["background"] = true,					-- Dont make it false!!!
+	["rightchat"] = true,					-- set loot window to right chatframe
+	["rightchatnumber"] = 3,				-- Rightchat-background is attached to ChatFrameX ..X = value
 }
 
 C["nameplate"] = {

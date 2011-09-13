@@ -25,8 +25,8 @@ for i = 1, 4 do
 		if C["datatext"].classcolored then
 			HydraData[i].Status:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
 		else
-			HydraData[i].Status:SetStatusBarColor(0.4, 0.4, 0.5)
-		end
+			HydraData[i].Status:SetStatusBarColor(0.3, 0.2, 0.8)
+	end
 	
 	HydraData[i].Status:Point("TOPLEFT", HydraData[i], "TOPLEFT", 2, -2)
 	HydraData[i].Status:Point("BOTTOMRIGHT", HydraData[i], "BOTTOMRIGHT", -2, 2)
@@ -69,10 +69,8 @@ HydraData[1].Status:SetScript("OnUpdate", function(self, elapsed)
 		HydraData[1].Text:SetText("FPS: "..value)
 		local classcolorbar = RAID_CLASS_COLORS[T.myclass]
 		--if C["datatext"].classcolored then
-		--	self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
-		--else
-		--	self:SetStatusBarColor(0.4, 0.4, 0.5)
-		--end
+		--self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
+		--elseif value * 100 / max >= 75 then
 		if value * 100 / max >= 75 then
 			self:SetStatusBarColor( 30 / 255, 1, 30 / 255 , .8 )
 		elseif value * 100 / max < 75 and value * 100 / max > 40 then
@@ -96,10 +94,8 @@ HydraData[2].Status:SetScript("OnUpdate", function(self, elapsed)
 		HydraData[2].Text:SetText("MS: "..value)
 		local classcolorbar = RAID_CLASS_COLORS[T.myclass]
 		--if C["datatext"].classcolored then
-		--	self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)
-		--else
-		--	self:SetStatusBarColor(0.4, 0.4, 0.5)
-		--end
+		--self:SetStatusBarColor(classcolorbar.r,classcolorbar.g,classcolorbar.b)	
+		--elseif value * 100 / max <= 35 then
 		if value * 100 / max <= 35 then
 			self:SetStatusBarColor( 30 / 255, 1, 30 / 255 , .8 )
 		elseif value * 100 / max > 35 and value * 100 / max < 75 then
@@ -185,6 +181,7 @@ Stat:SetScript("OnEnter", function(self) collectgarbage("collect") end)
 Stat:SetScript("OnUpdate", UpdateMem)
 UpdateMem(Stat, 10)
 
+
 -- DURABILITY
 HydraData[4].Status:SetScript("OnEvent", function(self)
 	local Total = 0
@@ -215,7 +212,6 @@ HydraData[4].Status:SetScript("OnEvent", function(self)
 		self:SetStatusBarColor( 1, 180 / 255, 0, .8 )
 	else
 		self:SetStatusBarColor( 1, 75 / 255, 75 / 255, 0.5, .8 )
-		--self:SetStatusBarColor(0.4, 0.4, 0.5)
 	end
 end )
 HydraData[4].Status:RegisterEvent("UPDATE_INVENTORY_DURABILITY")
@@ -324,7 +320,7 @@ end
 local toggle = CreateFrame("Frame", "RepToggle", TukuiChatBackgroundRight)
 toggle:CreatePanel(nil, 30, 15, "TOPRIGHT", TukuiChatBackgroundRight, "TOPRIGHT", -2, -52)
 toggle:EnableMouse(true)
-toggle:SetFrameStrata("HIGH")
+toggle:SetFrameStrata("MEDIUM")
 toggle:SetFrameLevel(10)
 toggle:CreateShadow("Default")
 toggle:CreateOverlay(toggle)
@@ -364,17 +360,17 @@ updater:SetScript("OnEvent", update)
 -- CURRENCY DATA BARS
 local CurrencyData = {}
 local tokens = {
-	{61, 250},	 -- Dalaran Jewelcrafter's Token
-	{81, 250},	 -- Dalaran Cooking Award
-	{241, 250},	 -- Champion Seal
-	{361, 200},  -- Illustrious Jewelcrafter's Token
-	{390, 3000}, -- Conquest Points
-	{391, 2000},  -- Tol Barad Commendation
-	{392, 4000}, -- Honor Points
-	{395, 4000}, -- Justice Points
-	{396, 4000}, -- Valor Points
-	{402, 10},	 -- Chef's Award 
-	{416, 300}, -- Mark of the World Tree
+	{61, 250},		-- Dalaran Jewelcrafter's Token
+	{81, 250},		-- Dalaran Cooking Award
+	{241, 250},		-- Champion Seal
+	{361, 200},		-- Illustrious Jewelcrafter's Token
+	{390, 3000},	-- Conquest Points
+	{391, 2000},	-- Tol Barad Commendation
+	{392, 4000},	-- Honor Points
+	{395, 4000},	-- Justice Points
+	{396, 4000},	-- Valor Points
+	{402, 10},		-- Chef's Award 
+	{416, 300},		-- Mark of the World Tree
 }
 
 if C["databars"].currency == true then
