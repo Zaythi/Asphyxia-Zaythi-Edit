@@ -3,7 +3,7 @@
 C["general"] = {
 	["autoscale"] = false,					-- mainly enabled for users that don't want to mess with the config file
 	["uiscale"] = 0.71,						-- set your value (between 0.64 and 1) of your uiscale if autoscale is off
-	["overridelowtohigh"] = false,			-- EXPERIMENTAL ONLY! override lower version to higher version on a lower reso.
+	["overridelowtohigh"] = true,			-- EXPERIMENTAL ONLY! override lower version to higher version on a lower reso.
 	["multisampleprotect"] = false,			-- I don't recommend this because of shitty border but, voila!
 	["backdropcolor"] = {0, 0, 0},			-- default backdrop color of panels
 	["bordercolor"] = {.125, .125, .125},	-- default border color of panels
@@ -205,7 +205,7 @@ C["asphyxia_panels"] = {
 
 C["chat"] = {
 	["enable"] = true,						-- blah
-	["rightchatnumber"] = 3,				-- Rightchat-background is attached to ChatFrameX ..X = value
+	["rightchatnumber"] = 2,				-- Rightchat-background is attached to ChatFrameX ..X = value
 	["whispersound"] = true,				-- play a sound when receiving whisper
 	["background"] = true,					-- Dont make it false!!!
 }
