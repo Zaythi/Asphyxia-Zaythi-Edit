@@ -58,16 +58,13 @@ for i = 1, 4 do
 end
 
 -- FPS
-
-local LastUpdate = 1
-
 HydraData[1].Status:SetScript("OnUpdate", function(self, elapsed)
 	LastUpdate = LastUpdate - elapsed
 	
 	if LastUpdate < 0 then
 		self:SetMinMaxValues(0, 50)
 		local value = floor(GetFramerate())
-		local max = 200 --GetCVar("MaxFPS")
+		local max = GetCVar("MaxFPS")
 		self:SetValue(value)
 		HydraData[1].Text:SetText("FPS: "..value)
 		local classcolorbar = RAID_CLASS_COLORS[T.myclass]
@@ -86,9 +83,6 @@ HydraData[1].Status:SetScript("OnUpdate", function(self, elapsed)
 end )
 
 -- MS 
-
-local LastUpdate = 1
-
 HydraData[2].Status:SetScript("OnUpdate", function(self, elapsed)
 	LastUpdate = LastUpdate - elapsed
 	

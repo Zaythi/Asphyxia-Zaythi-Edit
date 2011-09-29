@@ -93,11 +93,6 @@ local function chatsetup()
 					
 		-- Setup the spam chat frame
 		ChatFrame_RemoveAllMessageGroups(ChatFrame3)
-		ChatFrame_AddChannel(ChatFrame3, L.chat_trade)		-- erf, it seem we need to localize this now
-		ChatFrame_AddChannel(ChatFrame3, L.chat_general)	-- erf, it seem we need to localize this now
-		ChatFrame_AddChannel(ChatFrame3, L.chat_defense)	-- erf, it seem we need to localize this now
-		ChatFrame_AddChannel(ChatFrame3, L.chat_recrutment)	-- erf, it seem we need to localize this now
-		ChatFrame_AddChannel(ChatFrame3, L.chat_lfg)		-- erf, it seem we need to localize this now
 				
 		-- Setup the right chat
 		ChatFrame_RemoveAllMessageGroups(ChatFrame4)
@@ -186,7 +181,7 @@ v:SetTemplate("Transparent")
 v:CreateShadow("Default")
 v:FontString("Text", C.media.font, 12)
 v.Text:SetPoint("CENTER")
-v.Text:SetText("|cffFF6347AsphyxiaUI - version:|r 3.2  www.tukui.org")
+v.Text:SetText("|cffFF6347AsphyxiaUI - version:|r 3.1  www.tukui.org")
 v:SetScript("OnClick", function()
 	v:Hide()
 end)

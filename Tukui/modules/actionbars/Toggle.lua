@@ -20,7 +20,7 @@ local TukuiBar3 = TukuiBar3
 local TukuiBar4 = TukuiBar4
 local TukuiSplitBarLeft = TukuiSplitBarLeft
 local TukuiSplitBarRight = TukuiSplitBarRight
-local TukuiRightBar = TukuiRightBar
+local TukuiTukuiRightBar = TukuiTukuiRightBar
 local TukuiPetBar = TukuiPetBar
 
 local Toggle = CreateFrame("Frame", "TukuiToggleActionbar", actionBarBG)
@@ -94,16 +94,14 @@ local RightBars = function()
 				TukuiPetBar:Point("BOTTOMRIGHT", TukuiRightBar, "BOTTOMLEFT", -3, 0)
 			end
 		else
-			TukuiPetBar:Point("BOTTOM", TukuiRightBar, "TOP", 0, 3)
+			TukuiPetBar:Point("BOTTOMRIGHT", TukuiRightBar, "TOPRIGHT", 0, 3)
 		end
 	else
 		TukuiPetBar:ClearAllPoints()
 		if not C["chat"].background then
 			TukuiPetBar:Point("RIGHT", UIParent, "RIGHT", -8, 0)
-		elseif C["actionbar"].vertical_rightbars == true then
-			TukuiPetBar:Point("BOTTOMRIGHT", TukuiChatBackgroundRight, "TOPRIGHT", 0, 3)
 		else
-			TukuiPetBar:Point("BOTTOM", TukuiChatBackgroundRight, "TOP", 0, 3)
+			TukuiPetBar:Point("BOTTOMRIGHT", TukuiChatBackgroundRight, "TOPRIGHT", 0, 3)
 		end
 	end
 

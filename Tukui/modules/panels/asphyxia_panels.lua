@@ -49,9 +49,11 @@ if C.datatext.enable_specswitcher then
 	specswitcher :SetFrameLevel(TukuiTabsLeftBackground:GetFrameLevel() + 1)
 
 	local talenticon = CreateFrame("Frame", "TukuiTalentIcon", TukuiSpecSwitcher)
+	--talenticon:CreatePanel("Default", 18, 18, "LEFT", specswitcher, "RIGHT", 20, 0)
 	talenticon:CreatePanel("Default", TukuiTabsLeftBackground:GetHeight()-4, TukuiTabsLeftBackground:GetHeight()-4, "LEFT", specswitcher, "RIGHT", 20, 0)
+	--talenticon:CreateShadow("Default")
 	talenticon:SetFrameLevel(2)
-	talenticon:SetFrameStrata("BACKGROUND")
+	talenticon:SetFrameStrata("DIALOG")
 
 	talenticon.tex = talenticon:CreateTexture(nil, "ARTWORK")
 	talenticon.tex:Point("TOPLEFT", 2, -2)
