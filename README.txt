@@ -1,3 +1,14 @@
+-- [[AsphyxiaUI v3.2]] -- [09/28/2011]
+
+* General chat font changed.
+* Recount skin changed. [Credit Tukz]
+* Databar gradient color error fixed. Thanks to Jenack.
+* Specswitcher mouseover tooltip issue fixed.
+* Skinned default blizzard bags, if tukui bags are disabled. [Credit Spyritus & Hydra]
+* Old Asphyxia layout reimplemented as "Asphyxia2" layout.
+* Healing raidframes have been reconstructed to avoid gradient color issue. Also the frame position has been changed.
+* Torment and Tormented debuffs added.
+
 -- [[AsphyxiaUI v3.1]] -- [09/11/2011]
 
 * Actionbars have been completely redone. (Eclipse's v12 setup) This setup should work better for low res users. [Cradit Eclipse]
@@ -9,7 +20,6 @@
 * Filger updated for the new version (Need low res testing) [Thanks to Varuljin]
 * Item Level will display on tooltip now. [Credit Gsuz]
 * Other minor changes...
-
 
 -- [[AsphyxiaUI v3.0]] -- [09/06/2011]
 
@@ -25,7 +35,6 @@
 * Toggle buttons for Recount, Omen, Atlasloot, and Encounter journal removed.
 * Recent Tukz changes including micromenu feature and Glyph taint issue fixed. 
 * finally Bumped to version 3.0.
-
 
 -- [[Zaythi's known edits]] -- [09.07.11]
 
